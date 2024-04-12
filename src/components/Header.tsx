@@ -17,9 +17,9 @@ const Header = () => {
             />
           </Link>
         </Navbar.Brand>
-        <Nav activeKey="/home" className="font-josefin text-uppercase">
+        <Nav activeKey="/" className="font-josefin text-uppercase">
           <Nav.Item>
-            <Nav.Link href="/home" style={{  }}>
+            <Nav.Link href="/" style={{}}>
               Home
             </Nav.Link>
           </Nav.Item>
@@ -27,9 +27,9 @@ const Header = () => {
             <Nav.Link href="/locations">Locations</Nav.Link>
           </Nav.Item>
         </Nav>
-        <Button className="ms-auto">
-          My Favourites
-        </Button>
+        <Link href="/my-favourites" className="ms-auto">
+          <Button>My Favourites</Button>
+        </Link>
       </Container>
     </Navbar>
   );
