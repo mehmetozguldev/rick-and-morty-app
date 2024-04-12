@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <main
         className={`${montserrat.variable} ${josefinSans.variable} bg-black`}
+        data-bs-theme="dark"
       >
         <Header />
         <Component {...pageProps} />

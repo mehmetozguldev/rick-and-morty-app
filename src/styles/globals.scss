@@ -4,14 +4,12 @@ $dark: #151822;
 $body-color: #f8f9fa;
 $body-bg: #212529;
 $font-family-base: "Montserrat", sans-serif;
-
-@import "bootstrap";
-
 :root {
   --font-josefin-sans: "Josefin Sans", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
-  --bs-navbar-active-color: #{$body-color};
 }
+
+@import "bootstrap";
 
 .font-josefin {
   font-family: var(--font-josefin-sans);
@@ -70,8 +68,11 @@ $font-family-base: "Montserrat", sans-serif;
 .nav-link {
   color: $body-color;
 }
-.nav-link:active {
-  color:#42aa01
+.nav-link.active {
+  color: $body-color;
+}
+.active {
+  color: $body-color;
 }
 
 .navbar {
