@@ -1,7 +1,8 @@
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
-import { store } from "@/lib/store";
+import store from "@/lib/store";
+
 import { Josefin_Sans, Montserrat } from "next/font/google";
 import Header from "@/components/Header";
 
@@ -17,7 +18,9 @@ const montserrat = Montserrat({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <main className={`${montserrat.variable} ${josefinSans.variable}`}>
+      <main
+        className={`${montserrat.variable} ${josefinSans.variable} bg-black`}
+      >
         <Header />
         <Component {...pageProps} />
       </main>

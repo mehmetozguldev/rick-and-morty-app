@@ -1,5 +1,11 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import AllLocations from "@/components/Locations/AllLocations";
 
 export default function Home() {
-  return <main>Home</main>;
+  return (
+    <>
+      <Hero />
+      <AllLocations />
+    </>
+  );
 }
