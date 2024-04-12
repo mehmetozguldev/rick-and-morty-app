@@ -9,7 +9,11 @@ export default function Page() {
   const router = useRouter();
   const locationId = router.query.id;
 
-  const { data: location, isFetching, isSuccess } = useGetLocationQuery(locationId);
+  const {
+    data: location,
+    isFetching,
+    isSuccess,
+  } = useGetLocationQuery(locationId);
 
   let content;
 
@@ -18,6 +22,7 @@ export default function Page() {
   } else if (isSuccess) {
     content = (
       <LocationCard
+        link="/"
         key={location.id}
         name={location.name}
         type={location.type}

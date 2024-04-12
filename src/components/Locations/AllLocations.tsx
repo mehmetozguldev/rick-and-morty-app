@@ -30,6 +30,7 @@ const AllLocations = () => {
   } else if (isSuccess) {
     location = locations.results.map((location: LocationCardTypes) => (
       <LocationCard
+        link={`/locations/${location.id}`}
         key={location.id}
         name={location.name}
         type={location.type}
@@ -43,7 +44,7 @@ const AllLocations = () => {
 
   return (
     <Container style={{ padding: "128px 0" }}>
-      <h2>All Locations</h2>
+      <h2 className="font-montserrat mb-5">All Locations</h2>
       <section className="card-grid">{location}</section>
       <Pagination>{items}</Pagination>
     </Container>

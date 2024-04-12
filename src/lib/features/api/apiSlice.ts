@@ -10,7 +10,14 @@ export const apiSlice = createApi({
     getLocation: builder.query({
       query: (locationId) => `/location/${locationId}`,
     }),
+    getResident: builder.query({
+      query: (residentId) => `/character/${residentId},`,
+    }),
   }),
 });
 
-export const { useGetLocationsQuery, useGetLocationQuery } = apiSlice;
+export const {
+  useGetLocationsQuery,
+  useGetLocationQuery,
+  useGetResidentQuery,
+} = apiSlice;
