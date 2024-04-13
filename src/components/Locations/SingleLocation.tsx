@@ -5,7 +5,7 @@ import { useGetResidentsQuery } from "@/lib/features/api/apiSlice";
 import CharacterCard from "../Characters/CharacterCard";
 
 interface SingleLocationTypes {
-  locationId: string | string[] | undefined
+  locationId: string | string[] | undefined;
   ids: number[];
   title: string;
   residents: string[];
@@ -29,7 +29,13 @@ export default function SingleLocation({
       content = "There are no residents.";
     } else {
       content = data.map((resident: any) => (
-        <CharacterCard key={resident.id} name={resident.name} />
+        <CharacterCard
+          key={resident.id}
+          name={resident.name}
+          status={resident.status}
+          species={resident.species}
+          image={resident.image}
+        />
       ));
     }
   } else if (isError) {

@@ -83,3 +83,23 @@ $font-family-base: "Montserrat", sans-serif;
   width: 100%;
   z-index: 5;
 }
+
+.favourite-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  background: none;
+  border: none;
+}
+.favourite-wrapper:hover > .favourite-heart {
+  color: #e35959;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.favourite-heart {
+  color: #f8f9fa;
+}
