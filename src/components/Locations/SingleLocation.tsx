@@ -1,14 +1,11 @@
 import React from "react";
 import { Container, Spinner } from "react-bootstrap";
 
-import {
-  useGetLocationQuery,
-  useGetResidentsQuery,
-} from "@/lib/features/api/apiSlice";
+import { useGetResidentsQuery } from "@/lib/features/api/apiSlice";
 import CharacterCard from "../Characters/CharacterCard";
 
 interface SingleLocationTypes {
-  locationId: string | string[] | undefined;
+  locationId: string | string[] | undefined
   ids: number[];
   title: string;
   residents: string[];
@@ -28,9 +25,13 @@ export default function SingleLocation({
   if (isLoading) {
     content = <Spinner />;
   } else if (isSuccess) {
-    content = data.map((resident: any) => (
-      <CharacterCard key={resident.id} name={resident.name} />
-    ));
+    if (data.length == 0) {
+      content = "There are no residents.";
+    } else {
+      content = data.map((resident: any) => (
+        <CharacterCard key={resident.id} name={resident.name} />
+      ));
+    }
   } else if (isError) {
     content = <div>{error.toString()}</div>;
   }
