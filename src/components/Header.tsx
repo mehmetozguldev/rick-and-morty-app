@@ -5,8 +5,8 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <Navbar sticky="top" bg="dark">
-      <Container fluid className="justify-content-start px-32">
+    <Navbar>
+      <Container fluid className="justify-content-start">
         <Navbar.Brand>
           <Link href="/">
             <Image
@@ -19,9 +19,7 @@ const Header = () => {
         </Navbar.Brand>
         <Nav activeKey="/" className="font-josefin text-uppercase">
           <Nav.Item>
-            <Nav.Link href="/" style={{}}>
-              Home
-            </Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="/locations">Locations</Nav.Link>
