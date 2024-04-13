@@ -35,6 +35,7 @@ $font-family-base: "Montserrat", sans-serif;
 
 .hero-wrapper {
   background-image: url("/img/hero-bg.png");
+  background-color: #151822;
   background-attachment: scroll;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,8 +44,8 @@ $font-family-base: "Montserrat", sans-serif;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 70vh;
-  min-height: 70vh;
+  height: 800px;
+  min-height: 800px;
 }
 
 .hero-container {
@@ -76,15 +77,9 @@ $font-family-base: "Montserrat", sans-serif;
 }
 
 .navbar {
-  padding-left: 4rem;
-  padding-right: 4rem;
-
-  @media (min-width: 768px) {
-    padding-left: 6rem;
-    padding-right: 6rem;
-  }
-  @media (min-width: 1024px) {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  z-index: 5;
 }
