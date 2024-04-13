@@ -13,6 +13,9 @@ export const apiSlice = createApi({
     getResidents: builder.query({
       query: (residents) => `/character/${residents}`,
     }),
+    getResident: builder.query({
+      query: (resident) => `/character/${resident}`,
+    }),
   }),
 });
 
@@ -20,4 +23,5 @@ export const {
   useGetLocationsQuery,
   useGetLocationQuery,
   useGetResidentsQuery,
+  useGetResidentQuery,
 } = apiSlice;
