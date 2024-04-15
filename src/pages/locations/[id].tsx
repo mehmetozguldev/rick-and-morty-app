@@ -14,7 +14,7 @@ export default function Page() {
   } = useGetLocationQuery(locationId);
 
   let content;
-  let ids;
+  let ids = [];
 
   const extractIdsFromUrls = (urls: string[]): number[] => {
     return urls.map((url) => {
@@ -25,17 +25,12 @@ export default function Page() {
 
   if (isFetching) {
     content = <Spinner />;
-  } else if (isSuccess) {
+  } else if (isSuccess && location) {
+    ids = extractIdsFromUrls(location.residents);
+
+    content = <SingleLocation ids={ids} title={location.name} />;
     ids = extractIdsFromUrls(location.residents);
     console.log(ids);
-    content = (
-      <SingleLocation
-        ids={ids}
-        title={location.name}
-        locationId={locationId}
-        residents={location.residents}
-      />
-    );
   }
 
   return <>{content}</>;

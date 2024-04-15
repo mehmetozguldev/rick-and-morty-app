@@ -1,51 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 
 import { useGetResidentsQuery } from "@/lib/features/api/apiSlice";
 import CharacterCard from "../Characters/CharacterCard";
+import { Character } from "@/lib/types";
 
 interface SingleLocationTypes {
-  locationId: string | string[] | undefined;
   ids: number[];
   title: string;
-  residents: string[];
 }
 
-export default function SingleLocation({
-  locationId,
-  ids,
-  title,
-  residents,
-}: SingleLocationTypes) {
+export default function SingleLocation({ ids, title }: SingleLocationTypes) {
   const { data, isLoading, isSuccess, isError, error } =
     useGetResidentsQuery(ids);
+  const [normalizedData, setNormalizedData] = useState<Character[]>([]);
+  useEffect(() => {
+    if (isSuccess) {
+      if (!Array.isArray(data)) {
+        setNormalizedData([data]);
+      } else {
+        setNormalizedData(data);
+      }
+    }
+  }, [data, isSuccess]);
 
   let content;
 
   if (isLoading) {
     content = <Spinner />;
-  } else if (isSuccess) {
-    if (data.length == 0) {
-      content = "There are no residents.";
-    } else {
-      content = data.map((resident: any) => (
-        <CharacterCard
-          key={resident.id}
-          name={resident.name}
-          status={resident.status}
-          species={resident.species}
-          image={resident.image}
-        />
-      ));
-    }
-  } else if (isError) {
-    content = <div>{error.toString()}</div>;
+  } else if (normalizedData.length > 0) {
+    content = normalizedData.map((resident: any) => (
+      <CharacterCard
+        key={resident.id}
+        id={resident.id}
+        name={resident.name}
+        status={resident.status}
+        species={resident.species}
+        image={resident.image}
+      />
+    ));
+  } else {
+    content = <p>No characters found.</p>;
   }
 
   return (
-    <Container style={{ padding: "128px 0" }}>
-      <h2>{title} Characters</h2>
-      <p>Characters living and having lived in {title}.</p>
+    <Container style={{ padding: "12rem 0" }}>
+      <h2 className="font-josefin">{title} Characters</h2>
+      <p className="font-josefin fw-light">
+        Characters living and having lived in {title}.
+      </p>
       <section className="card-grid">{content}</section>
     </Container>
   );
