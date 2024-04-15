@@ -11,9 +11,9 @@ interface SingleLocationTypes {
 }
 
 export default function SingleLocation({ ids, title }: SingleLocationTypes) {
-  const { data, isLoading, isSuccess, isError, error } =
-    useGetResidentsQuery(ids);
+  const { data, isLoading, isSuccess } = useGetResidentsQuery(ids);
   const [normalizedData, setNormalizedData] = useState<Character[]>([]);
+
   useEffect(() => {
     if (isSuccess) {
       if (!Array.isArray(data)) {
@@ -49,7 +49,7 @@ export default function SingleLocation({ ids, title }: SingleLocationTypes) {
       <p className="font-josefin fw-light">
         Characters living and having lived in {title}.
       </p>
-      <section className="card-grid">{content}</section>
+      <section className="card-grid mb-5">{content}</section>
     </Container>
   );
 }

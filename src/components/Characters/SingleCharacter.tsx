@@ -1,5 +1,5 @@
-import { Character } from "@/lib/types";
-import { Heart, X } from "lucide-react";
+import { Character, Status } from "@/lib/types";
+import { Dot, Heart, X } from "lucide-react";
 import React from "react";
 import { Badge, Button, Col, Container, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,8 +17,14 @@ const SingleCharacter = ({
 }: Character) => {
   const dispatch = useDispatch();
   const { ids } = useSelector((state: any) => state.favourites);
-
   const isFavourite = ids.includes(id);
+
+  const statusClass =
+    status === Status.Alive
+      ? "status-alive"
+      : status === Status.Dead
+      ? "status-dead"
+      : "status-unknown";
 
   return (
     <Container
@@ -48,16 +54,37 @@ const SingleCharacter = ({
                 width="200"
                 height="200"
                 alt={name}
-                className="rounded-4"
+                className="rounded-4 img-fluid"
+                style={{ width: "100%" }}
               />
             </Col>
-            <Col>
+            <Col
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+              }}
+            >
               <h2 className="font-montserrat">{name}</h2>
-              <Badge>{status}</Badge>
-              <span>{species}</span>
-              <h3>{type}</h3>
-              <p>{location.name}</p>
-              <p>{gender}</p>
+              <div className="d-flex flex-row align-items-center mb-3">
+                <span className={`font-montserrat status-pill ${statusClass}`}>
+                  <Dot style={{ scale: "2.5" }} />
+                  {status}
+                </span>
+                <Dot />
+                <span className="font-montserrat">{species}</span>
+              </div>
+              <div>
+                <h3 style={{ fontSize: "24px" }} className="font-montserrat mb-1">{type}</h3>
+                <p
+                  style={{ textDecoration: "underline" }}
+                  className="font-montserrat mb-0"
+                >
+                  {location.name}
+                </p>
+                <p className="font-montserrat">{gender}</p>
+              </div>
               <Button
                 variant={isFavourite ? "danger" : "primary"}
                 className="favourite-button"

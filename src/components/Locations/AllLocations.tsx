@@ -29,11 +29,6 @@ const AllLocations = () => {
   } else if (isSuccess) {
     console.log(locations);
     if (locations) {
-      // const startIndex = (currentPage - 1) * 15;
-      // const endIndex = currentPage * 15;
-
-      // const slicedLocations = locations.results.slice(startIndex, endIndex);
-
       location = locations.results.map((location: LocationCardTypes) => (
         <LocationCard
           link={`/locations/${location.id}`}
@@ -47,6 +42,38 @@ const AllLocations = () => {
     }
   } else if (isError) {
     location = <div>{error.toString()}</div>;
+  }
+
+  const paginationItems = [];
+  if (locations && locations.info) {
+    const totalPages = locations.info.pages;
+    const maxPaginationItems = 5;
+    let startPage = Math.max(
+      1,
+      currentPage - Math.floor(maxPaginationItems / 2)
+    );
+    let endPage = Math.min(totalPages, startPage + maxPaginationItems - 1);
+
+    if (endPage - startPage + 1 < maxPaginationItems) {
+      const diff = maxPaginationItems - (endPage - startPage + 1);
+      if (startPage === 1) {
+        endPage = Math.min(totalPages, endPage + diff);
+      } else {
+        startPage = Math.max(1, startPage - diff);
+      }
+    }
+
+    for (let number = startPage; number <= endPage; number++) {
+      paginationItems.push(
+        <Pagination.Item
+          key={number}
+          active={number === currentPage}
+          onClick={() => handlePaginationClick(number)}
+        >
+          {number}
+        </Pagination.Item>
+      );
+    }
   }
 
   return (
@@ -66,7 +93,7 @@ const AllLocations = () => {
             }
             disabled={currentPage === 1}
           />
-          <Pagination.Item active>{currentPage}</Pagination.Item>
+          {paginationItems}
           <Pagination.Next
             className="pagination-arrow font-montserrat"
             onClick={() =>

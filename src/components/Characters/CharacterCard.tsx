@@ -25,13 +25,6 @@ export default function CharacterCard({
       ? "status-dead"
       : "status-unknown";
 
-  const statusDot =
-    status === Status.Alive
-      ? "status-alive"
-      : status === Status.Dead
-      ? "status-dead"
-      : "status-unknown";
-
   return (
     <Card
       bg="dark"
@@ -63,7 +56,7 @@ export default function CharacterCard({
         </Card.Title>
         <div className="d-flex flex-row align-items-center">
           <span className={`font-montserrat status-pill ${statusClass}`}>
-            <Dot className="{statusDot}" style={{ scale:"2.5" }} />
+            <Dot style={{ scale: "2.5" }} />
             {status}
           </span>
           <Dot />
