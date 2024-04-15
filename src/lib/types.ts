@@ -11,6 +11,7 @@ export enum Status {
 
 interface Character {
   id: number;
+  locationId: number;
   name: string;
   status: Status;
   species: string;

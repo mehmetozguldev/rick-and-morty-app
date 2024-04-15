@@ -20,10 +20,14 @@ export default function Page() {
   if (isLoading) {
     content = <Spinner />;
   } else if (isSuccess) {
+    const locationId = character.origin.url.match(/\/(\d+)$/)[1];
+    console.log(locationId);
+
     content = (
       <SingleCharacter
         id={character.id}
         key={character.id}
+        locationId={locationId}
         image={character.image}
         name={character.name}
         status={character.status}
@@ -37,12 +41,5 @@ export default function Page() {
     content = <div>{error.toString()}</div>;
   }
 
-  return (
-    <>
-      {content}
-      <Container style={{ padding: "4rem 0 12rem 0" }}>
-        <h2 className="font-montserrat">Other Characters</h2>
-      </Container>
-    </>
-  );
+  return <>{content}</>;
 }
