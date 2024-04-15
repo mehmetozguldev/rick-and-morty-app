@@ -3,10 +3,16 @@ interface LocationInfo {
   url: string;
 }
 
+export enum Status {
+  Alive = "Alive",
+  Dead = "Dead",
+  Unknown = "Unknown",
+}
+
 interface Character {
   id: number;
   name: string;
-  status: string;
+  status: Status;
   species: string;
   type: string;
   gender: string;
@@ -14,4 +20,12 @@ interface Character {
   image: string;
 }
 
-export type { LocationInfo, Character };
+interface CharacterCardProps {
+  id: number;
+  name: string;
+  status: Status;
+  species: string;
+  image: string;
+}
+
+export type { LocationInfo, Character, CharacterCardProps };
