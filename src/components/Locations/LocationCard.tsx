@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Card } from "react-bootstrap";
+import { Badge, Card, Row } from "react-bootstrap";
 
 export interface LocationCardTypes {
   id?: number;
@@ -18,25 +18,38 @@ const LocationCard = ({
   link,
 }: LocationCardTypes) => {
   return (
-    <Link href={link}>
+    <Link href={link} style={{ textDecoration: "none" }}>
       <Card
         bg="dark"
         text="secondary"
-        style={{ width: "full" }}
+        style={{ width: "full", border: "none" }}
         className="rounded-5 p-3 gap-5"
       >
-        <Card.Body>
+        <Card.Body
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
           <Badge
             pill
             bg="secondary"
             text="dark"
-            className="ml-auto fw-semibold font-montserrat"
+            className="ms-auto mb-2 fw-semibold font-montserrat"
           >
             {residents.length}
           </Badge>
           <Card.Title className="font-josefin">{name}</Card.Title>
-          <Card.Subtitle className="mb-2 font-josefin">{dimension}</Card.Subtitle>
-          <Badge pill bg="secondary" text="dark" className="font-montserrat fw-normal">
+          <Card.Subtitle className="mb-3 font-josefin">
+            {dimension}
+          </Card.Subtitle>
+          <Badge
+            pill
+            bg="secondary"
+            text="dark"
+            className="font-montserrat fw-normal"
+          >
             {type}
           </Badge>
         </Card.Body>

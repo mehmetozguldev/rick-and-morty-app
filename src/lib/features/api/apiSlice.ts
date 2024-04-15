@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://rickandmortyapi.com/api" }),
   endpoints: (builder) => ({
     getLocations: builder.query({
-      query: () => "/location",
+      query: (pageNumber) => `/location/?page=${pageNumber}`,
     }),
     getLocation: builder.query({
       query: (locationId) => `/location/${locationId}`,

@@ -167,3 +167,23 @@ $font-family-base: "Montserrat", sans-serif;
     }
   }
 }
+
+/* CHARACTER CARD */
+.status-pill {
+  padding: 0.1rem 1rem;
+  font-size: 14px;
+  border: 2px solid !important;
+  border-radius: 0.5rem;
+}
+.status-alive {
+  border-color: $primary !important;
+  color: $primary !important;
+}
+.status-dead {
+  border-color: #e35959 !important;
+  color: #e35959 !important;
+}
+.status-unknown {
+  border-color: #d9d9d9;
+  color: #d9d9d9;
+}
