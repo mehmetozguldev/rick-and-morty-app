@@ -40,8 +40,8 @@ export default function Page() {
   return (
     <>
       {content}
-      <Container>
-        <h2>Other Characters</h2>
+      <Container style={{ padding: "4rem 0 12rem 0" }}>
+        <h2 className="font-montserrat">Other Characters</h2>
       </Container>
     </>
   );
