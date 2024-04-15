@@ -1,6 +1,7 @@
 $primary: #42aa01;
 $secondary: #d9d9d9;
 $dark: #151822;
+$navlink-color: #515151;
 $body-color: #f8f9fa;
 $body-bg: #212529;
 $font-family-base: "Montserrat", sans-serif;
@@ -11,6 +12,8 @@ $font-family-base: "Montserrat", sans-serif;
 
 @import "bootstrap";
 
+/* FONTS */
+
 .font-josefin {
   font-family: var(--font-josefin-sans);
 }
@@ -19,10 +22,12 @@ $font-family-base: "Montserrat", sans-serif;
   font-family: var(--font-montserrat);
 }
 
+/* LAYOUT */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 1.5rem;
   width: 100%;
 
   @media (min-width: 640px) {
@@ -55,6 +60,12 @@ $font-family-base: "Montserrat", sans-serif;
   align-items: flex-start;
 }
 
+.black-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* BUTTONS */
+
 .btn {
   padding: 13px 24px;
   font-weight: 500;
@@ -65,15 +76,20 @@ $font-family-base: "Montserrat", sans-serif;
 .btn:hover {
   color: $body-color;
 }
+/* NAVIGATION */
 
-.nav-link {
-  color: $body-color;
-}
-.nav-link.active {
-  color: $body-color;
-}
-.active {
-  color: $body-color;
+.nav-item {
+  .nav-link {
+    color: $navlink-color;
+    border: unset !important;
+  }
+  .nav-link:hover {
+    color: $body-color;
+  }
+  .active {
+    color: $body-color;
+    border-bottom: 2px solid $primary !important;
+  }
 }
 
 .navbar {
@@ -84,6 +100,8 @@ $font-family-base: "Montserrat", sans-serif;
   z-index: 5;
 }
 
+/* ADD TO FAVOURITES */
+
 .favourite-wrapper {
   position: absolute;
   top: 1.5rem;
@@ -92,12 +110,21 @@ $font-family-base: "Montserrat", sans-serif;
   background: none;
   border: none;
 }
+.favourite-wrapper:hover {
+  background: none;
+}
+.favourite-heart-active {
+  color: #e35959;
+}
 .favourite-wrapper:hover > .favourite-heart {
   color: #e35959;
   transition-property: background-color, border-color, color, fill, stroke,
     opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+.favourite-heart:focus {
+  background: none;
 }
 
 .favourite-heart {
@@ -117,4 +144,26 @@ $font-family-base: "Montserrat", sans-serif;
     opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 500ms;
+}
+
+/* PAGINATION */
+.pagination {
+  .active {
+    .page-link {
+      background-color: $primary;
+      color: $secondary;
+    }
+  }
+  .page-link {
+    border-radius: 4px !important;
+    border: none;
+    background-color: $secondary;
+    color: $navlink-color;
+  }
+  .pagination-arrow {
+    .page-link {
+      background: none;
+      color: $secondary;
+    }
+  }
 }
